@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Gerador_de_Testes.Compartilhado
 {
+    using Gerador_de_Testes.ModuloDisciplina;
     using Gerador_de_Testes.ModuloGabarito;
     using Gerador_de_Testes.ModuloMateria;
     using Gerador_de_Testes.ModulosQuestoes;

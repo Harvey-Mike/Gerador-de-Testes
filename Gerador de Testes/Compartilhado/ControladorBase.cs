@@ -7,37 +7,19 @@ using System.Threading.Tasks;
 
 namespace Gerador_de_Testes.Compartilhado
 {
-    public class Disciplina : EntidadeBase
+    public abstract class ControladorBase
     {
-        public string Nome { get; set; }
-        public List<Materia> Materias { get; set; }
+        public abstract string TipoCadastro { get; }
 
-        public Disciplina(string nome)
-        {
-            Nome = nome;
-            Materias = new List<Materia>();
-        }
+        public abstract string ToolTipAdicionar { get; }
+        public abstract string ToolTipEditar { get; }
+        public abstract string ToolTipExcluir { get; }
 
-        public override List<string> Validar()
-        {
-            List<string> erros = new List<string>();
+        public abstract UserControl ObterListagem();
 
-            if (string.IsNullOrEmpty(Nome.Trim()))
-                erros.Add("O campo \"nome\" é obrigatório");
-
-            return erros;
-        }
-
-        public override void AtualizarRegistro(EntidadeBase novoRegistro)
-        {
-            Disciplina d = (Disciplina)novoRegistro;
-            Nome = d.Nome;
-        }
-
-        public override string ToString()
-        {
-            return $"{Nome}";
-        }
+        public abstract void Adicionar();
+        public abstract void Editar();
+        public abstract void Excluir();
     }
 
 }

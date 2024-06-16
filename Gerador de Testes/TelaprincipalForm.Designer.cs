@@ -1,6 +1,6 @@
 ﻿namespace Gerador_de_Testes
 {
-    partial class Form1
+    partial class TelaPrincipalForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -39,7 +39,7 @@
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
-            // Form1
+            // TelaPrincipalForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -49,7 +49,7 @@
             MainMenuStrip = menuStrip1;
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "Form1";
+            Name = "TelaPrincipalForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Gerador de Testes";
             ResumeLayout(false);
