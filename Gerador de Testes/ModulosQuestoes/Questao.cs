@@ -10,50 +10,66 @@ namespace Gerador_de_Testes.ModulosQuestoes
 {
     public class Questao : EntidadeBase
     {
-        public string Enunciado { get; set; }
-        public List<string> Alternativas { get; set; }
-        public int RespostaCorreta { get; set; }
         public Materia Materia { get; set; }
+        public string Enunciado { get; set; }
+        public List<Alternativa> Alternativas { get; set; }
+        public Alternativa RespostaCorreta { get; set; }
 
-        public Questao(string enunciado, List<string> alternativas, int respostaCorreta, Materia materia)
+        public Questao(Materia materia, string enunciado)
         {
-            Enunciado = enunciado;
-            Alternativas = alternativas;
-            RespostaCorreta = respostaCorreta;
             Materia = materia;
+            Enunciado = enunciado;
+            Alternativas = new List<Alternativa>();
         }
 
         public override List<string> Validar()
         {
             List<string> erros = new List<string>();
 
+            if (Materia == null)
+                erros.Add("O campo \"matéria\" é obrigatório");
+
             if (string.IsNullOrEmpty(Enunciado.Trim()))
                 erros.Add("O campo \"enunciado\" é obrigatório");
 
-            if (Alternativas == null || Alternativas.Count < 2)
-                erros.Add("Devem existir pelo menos duas alternativas");
+            if (Alternativas.Count < 2)
+                erros.Add("A questão deve ter pelo menos duas alternativas");
 
-            if (RespostaCorreta < 0 || RespostaCorreta >= Alternativas.Count)
-                erros.Add("A resposta correta deve ser um índice válido das alternativas");
-
-            if (Materia == null)
-                erros.Add("A \"matéria\" é obrigatória");
+            if (RespostaCorreta == null)
+                erros.Add("A questão deve ter uma alternativa correta");
 
             return erros;
         }
 
         public override void AtualizarRegistro(EntidadeBase novoRegistro)
         {
-            Questao q = (Questao)novoRegistro;
-            Enunciado = q.Enunciado;
-            Alternativas = q.Alternativas;
-            RespostaCorreta = q.RespostaCorreta;
-            Materia = q.Materia;
+            Questao questao = (Questao)novoRegistro;
+            Materia = questao.Materia;
+            Enunciado = questao.Enunciado;
+            Alternativas = questao.Alternativas;
+            RespostaCorreta = questao.RespostaCorreta;
         }
 
         public override string ToString()
         {
-            return $"{Enunciado}";
+            return $"{Enunciado} - {Materia?.Nome}";
+        }
+    }
+
+    public class Alternativa
+    {
+        public string Texto { get; set; }
+        public bool Correta { get; set; }
+
+        public Alternativa(string texto, bool correta)
+        {
+            Texto = texto;
+            Correta = correta;
+        }
+
+        public override string ToString()
+        {
+            return Texto;
         }
     }
 }
