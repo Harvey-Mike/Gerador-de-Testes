@@ -15,25 +15,25 @@ namespace Gerador_de_Testes.ModuloDisciplina
         public TabelaDisciplinaControl()
         {
             InitializeComponent();
-            dataGrid.Columns.AddRange(CriarColunas());
+            dataGridDisciplina.Columns.AddRange(CriarColunas());
         }
 
         public void AtualizarRegistros(List<Disciplina> disciplinas)
         {
-            dataGrid.Rows.Clear();
+            dataGridDisciplina.Rows.Clear();
 
             foreach (Disciplina d in disciplinas)
             {
-                dataGrid.Rows.Add(d.Id, d.Nome);
+                dataGridDisciplina.Rows.Add(d.Id, d.Nome);
             }
         }
 
         public int ObterRegistroSelecionado()
         {
-            if (dataGrid.SelectedRows.Count == 0)
+            if (dataGridDisciplina.SelectedRows.Count == 0)
                 return -1;
 
-            return Convert.ToInt32(dataGrid.SelectedRows[0].Cells[0].Value);
+            return Convert.ToInt32(dataGridDisciplina.SelectedRows[0].Cells[0].Value);
         }
 
         private DataGridViewColumn[] CriarColunas()

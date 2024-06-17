@@ -35,18 +35,19 @@
             // dataGridMateria
             // 
             dataGridMateria.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridMateria.Location = new Point(73, 31);
+            dataGridMateria.Dock = DockStyle.Fill;
+            dataGridMateria.Location = new Point(0, 0);
             dataGridMateria.Name = "dataGridMateria";
-            dataGridMateria.Size = new Size(240, 150);
+            dataGridMateria.Size = new Size(800, 356);
             dataGridMateria.TabIndex = 0;
             // 
-            // TabelaMateriaUserControl
+            // TabelaMateriaControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(dataGridMateria);
-            Name = "TabelaMateriaUserControl";
-            Size = new Size(411, 264);
+            Name = "TabelaMateriaControl";
+            Size = new Size(800, 356);
             ((System.ComponentModel.ISupportInitialize)dataGridMateria).EndInit();
             ResumeLayout(false);
         }
