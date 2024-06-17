@@ -12,16 +12,14 @@ namespace Gerador_de_Testes.ModuloMateria
     public class Materia : EntidadeBase
     {
         public string Nome { get; set; }
-        public string Disciplina { get; set; }
+        public Disciplina Disciplina { get; set; }
         public int Serie { get; set; }
-        public List<Questao> Questoes { get; set; }
 
-        public Materia(string nome, string disciplina, int serie)
+        public Materia(string nome, Disciplina disciplina, int serie)
         {
             Nome = nome;
             Disciplina = disciplina;
             Serie = serie;
-            Questoes = new List<Questao>();
         }
 
         public override List<string> Validar()
