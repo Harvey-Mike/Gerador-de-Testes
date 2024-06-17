@@ -1,4 +1,5 @@
 ﻿using Gerador_de_Testes.Compartilhado;
+using Gerador_de_Testes.ModuloDisciplina;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,11 @@ namespace Gerador_de_Testes.ModuloMateria
     {
         private TabelaMateriaControl tabelaMateria;
         private IRepositorioMateria repositorioMateria;
-
-        public ControladorMateria(IRepositorioMateria repositorioMateria)
+        private IRepositorioDisciplina repositorioDisciplina;
+        public ControladorMateria(IRepositorioMateria repositorioMateria, IRepositorioDisciplina repositorioDisciplina)
         {
             this.repositorioMateria = repositorioMateria;
+            this.repositorioDisciplina = repositorioDisciplina;
         }
 
         public override string TipoCadastro { get { return "Matérias"; } }
@@ -28,6 +30,8 @@ namespace Gerador_de_Testes.ModuloMateria
         public override void Adicionar()
         {
             TelaMateriaForm telaMateria = new TelaMateriaForm();
+
+            PreencherComboBox(telaMateria);
 
             DialogResult resultado = telaMateria.ShowDialog();
 
@@ -56,6 +60,9 @@ namespace Gerador_de_Testes.ModuloMateria
             }
 
             TelaMateriaForm telaMateria = new TelaMateriaForm();
+
+            PreencherComboBox(telaMateria);
+
             telaMateria.Materia = materiaSelecionada;
 
             DialogResult resultado = telaMateria.ShowDialog();
@@ -109,6 +116,18 @@ namespace Gerador_de_Testes.ModuloMateria
         {
             List<Materia> materias = repositorioMateria.SelecionarTodos();
             tabelaMateria.AtualizarRegistros(materias);
+        }
+        public List<Disciplina> SelecionarDisciplinas()
+        {
+            List<Disciplina> disciplinas = repositorioDisciplina.SelecionarTodos();
+
+            return disciplinas;
+        }
+        private void PreencherComboBox(TelaMateriaForm telaMateria)
+        {
+            List<Disciplina> disciplinas = SelecionarDisciplinas();
+
+            telaMateria.PreencherComboBox(disciplinas);
         }
     }
 }

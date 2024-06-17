@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 namespace Gerador_de_Testes.Compartilhado
 {
     using Gerador_de_Testes.ModuloDisciplina;
-    using Gerador_de_Testes.ModuloGabarito;
     using Gerador_de_Testes.ModuloMateria;
     using Gerador_de_Testes.ModulosQuestoes;
     using Gerador_de_Testes.ModuloTestes;
@@ -27,7 +26,6 @@ namespace Gerador_de_Testes.Compartilhado
             public List<Materia> Materias { get; set; }
             public List<Questao> Questoes { get; set; }
             public List<Teste> Testes { get; set; }
-            public List<Gabarito> Gabaritos { get; set; }
 
             public ContextoDados()
             {
@@ -35,7 +33,6 @@ namespace Gerador_de_Testes.Compartilhado
                 Materias = new List<Materia>();
                 Questoes = new List<Questao>();
                 Testes = new List<Teste>();
-                Gabaritos = new List<Gabarito>();
             }
 
             public ContextoDados(bool carregarDados) : this()
@@ -84,7 +81,6 @@ namespace Gerador_de_Testes.Compartilhado
                 Materias = ctx.Materias;
                 Questoes = ctx.Questoes;
                 Testes = ctx.Testes;
-                Gabaritos = ctx.Gabaritos;
             }
         }
     }
