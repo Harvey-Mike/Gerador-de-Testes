@@ -12,11 +12,40 @@ namespace Gerador_de_Testes.ModuloDisciplina
 {
     public partial class TelaDisciplinaForm : Form
     {
+        private Disciplina disciplina;
+        public Disciplina Disciplina
+        {
+            set
+            {
+                txtId.Text = value.Id.ToString();
+                txtDisciplina.Text = value.Nome;
+            }
+
+            get => disciplina;
+        }
+
         public TelaDisciplinaForm()
         {
             InitializeComponent();
         }
 
-        public Disciplina Disciplina { get; internal set; }
+        private void btnGravar_Click(object sender, EventArgs e)
+        {
+            string nome = txtDisciplina.Text;
+
+            disciplina = new Disciplina(nome);
+
+            List<string> erros = disciplina.Validar();
+
+            if (erros.Count > 0)
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape(erros[0]);
+
+                DialogResult = DialogResult.None;
+
+            }
+            else
+                DialogResult = DialogResult.OK;
+        }
     }
 }

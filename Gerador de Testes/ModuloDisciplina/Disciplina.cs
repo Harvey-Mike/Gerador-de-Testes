@@ -1,20 +1,17 @@
 ﻿using Gerador_de_Testes.Compartilhado;
 using Gerador_de_Testes.ModuloMateria;
   
-
-
 namespace Gerador_de_Testes.ModuloDisciplina
 {
 
     public class Disciplina : EntidadeBase
     {
         public string Nome { get; set; }
-        public List<Materia> Materias { get; set; }
 
+        public Disciplina() { }
         public Disciplina(string nome)
         {
             Nome = nome;
-            Materias = new List<Materia>();
         }
 
         public override List<string> Validar()
