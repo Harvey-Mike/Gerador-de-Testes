@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -158,6 +159,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+
             ClientSize = new Size(452, 569);
             Controls.Add(btnAdicionar);
             Controls.Add(groupBox1);
