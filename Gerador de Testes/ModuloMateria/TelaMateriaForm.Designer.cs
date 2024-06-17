@@ -87,7 +87,7 @@
             txtId.Name = "txtId";
             txtId.ReadOnly = true;
             txtId.Size = new Size(53, 23);
-            txtId.TabIndex = 4;
+            txtId.TabIndex = 1;
             txtId.Text = "0";
             txtId.TextAlign = HorizontalAlignment.Right;
             // 
@@ -96,7 +96,7 @@
             txtNomeMateria.Location = new Point(158, 86);
             txtNomeMateria.Name = "txtNomeMateria";
             txtNomeMateria.Size = new Size(386, 23);
-            txtNomeMateria.TabIndex = 5;
+            txtNomeMateria.TabIndex = 2;
             // 
             // cmbBoxDisciplina
             // 
@@ -104,7 +104,7 @@
             cmbBoxDisciplina.Location = new Point(158, 121);
             cmbBoxDisciplina.Name = "cmbBoxDisciplina";
             cmbBoxDisciplina.Size = new Size(131, 23);
-            cmbBoxDisciplina.TabIndex = 6;
+            cmbBoxDisciplina.TabIndex = 3;
             // 
             // rdbPrimeiraSerie
             // 
@@ -113,7 +113,7 @@
             rdbPrimeiraSerie.Location = new Point(158, 152);
             rdbPrimeiraSerie.Name = "rdbPrimeiraSerie";
             rdbPrimeiraSerie.Size = new Size(45, 24);
-            rdbPrimeiraSerie.TabIndex = 7;
+            rdbPrimeiraSerie.TabIndex = 4;
             rdbPrimeiraSerie.TabStop = true;
             rdbPrimeiraSerie.Text = " 1ª";
             rdbPrimeiraSerie.UseVisualStyleBackColor = true;
@@ -125,7 +125,7 @@
             rdbSegundaSerie.Location = new Point(248, 152);
             rdbSegundaSerie.Name = "rdbSegundaSerie";
             rdbSegundaSerie.Size = new Size(41, 24);
-            rdbSegundaSerie.TabIndex = 8;
+            rdbSegundaSerie.TabIndex = 5;
             rdbSegundaSerie.TabStop = true;
             rdbSegundaSerie.Text = "2ª";
             rdbSegundaSerie.UseVisualStyleBackColor = true;
@@ -135,7 +135,7 @@
             btnGravar.Location = new Point(364, 257);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(98, 42);
-            btnGravar.TabIndex = 9;
+            btnGravar.TabIndex = 7;
             btnGravar.Text = "Gravar";
             btnGravar.UseVisualStyleBackColor = true;
             btnGravar.Click += btnGravar_Click;
@@ -145,7 +145,7 @@
             btnCancelar.Location = new Point(468, 257);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(98, 42);
-            btnCancelar.TabIndex = 10;
+            btnCancelar.TabIndex = 6;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             // 
