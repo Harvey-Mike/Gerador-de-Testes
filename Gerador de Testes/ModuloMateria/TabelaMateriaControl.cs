@@ -24,13 +24,16 @@ namespace Gerador_de_Testes.ModuloMateria
 
             foreach (Materia m in materias)
             {
-                dataGridMateria.Rows.Add(m.Id, m.Nome, m.Disciplina.Nome, m.Serie);
+                dataGridMateria.Rows.Add(m.Id, m.Nome, m.Disciplina, m.Serie);
             }
         }
 
         internal int ObterRegistroSelecionado()
         {
-            throw new NotImplementedException();
+            if (dataGridMateria.SelectedRows.Count == 0)
+                return -1;
+
+            return Convert.ToInt32(dataGridMateria.SelectedRows[0].Cells[0].Value);
         }
 
         private DataGridViewColumn[] CriarColunas()

@@ -1,4 +1,5 @@
 ﻿using Gerador_de_Testes.Compartilhado.GeradorDeTestes.WinApp.Compartilhado;
+using Gerador_de_Testes.ModuloDisciplina;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +12,12 @@ namespace Gerador_de_Testes.ModuloMateria
     {
         public RepositorioMateriaEmArquivo(ContextoDados contexto) : base(contexto)
         {
-
         }
 
         protected override List<Materia> ObterRegistros()
         {
             return contexto.Materias;
         }
+
     }
 }

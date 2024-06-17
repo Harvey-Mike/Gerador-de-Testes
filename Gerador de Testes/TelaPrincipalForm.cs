@@ -47,7 +47,7 @@ namespace Gerador_de_Testes
 
         private void materiaMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorMateria(repositorioMateria);
+            controlador = new ControladorMateria(repositorioMateria, repositorioDisciplina);
 
             ConfigurarTelaPrincipal(controlador);
         }
@@ -110,3 +110,4 @@ namespace Gerador_de_Testes
         }
     }
 }
+

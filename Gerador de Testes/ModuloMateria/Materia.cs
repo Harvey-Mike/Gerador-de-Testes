@@ -12,10 +12,10 @@ namespace Gerador_de_Testes.ModuloMateria
     public class Materia : EntidadeBase
     {
         public string Nome { get; set; }
-        public Disciplina Disciplina { get; set; }
-        public int Serie { get; set; }
+        public string Disciplina { get; set; }
+        public string Serie { get; set; }
 
-        public Materia(string nome, Disciplina disciplina, int serie)
+        public Materia(string nome, string disciplina, string serie)
         {
             Nome = nome;
             Disciplina = disciplina;
@@ -32,8 +32,8 @@ namespace Gerador_de_Testes.ModuloMateria
             if (Disciplina == null)
                 erros.Add("A \"disciplina\" é obrigatória");
 
-            if (Serie <= 0)
-                erros.Add("A \"série\" deve ser maior que zero");
+            if (Serie == null)
+                erros.Add("A \"série\" é um campo obrigatório");
 
             return erros;
         }
