@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Gerador_de_Testes.ModuloMateria
 {
-    public class RepositorioMateriaEmArquivo : RepositorioBaseEmArquivo<Materia>
+    public class RepositorioMateriaEmArquivo : RepositorioBaseEmArquivo<Materia>, IRepositorioMateria
     {
         public RepositorioMateriaEmArquivo(ContextoDados contexto) : base(contexto)
         {

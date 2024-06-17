@@ -18,5 +18,6 @@ namespace Gerador_de_Testes.ModuloMateria
         }
 
         public Materia Materia { get; internal set; }
+
     }
 }
