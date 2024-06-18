@@ -41,11 +41,16 @@ namespace Gerador_de_Testes.ModuloDisciplina
             {
                 TelaPrincipalForm.Instancia.AtualizarRodape(erros[0]);
 
+                MessageBox.Show(
+                    "Não é possível gravar um objeto com erros, cheque o rodapé para mais informações",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                
                 DialogResult = DialogResult.None;
 
             }
-            else
-                DialogResult = DialogResult.OK;
         }
     }
 }

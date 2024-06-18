@@ -28,18 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
             txtEnunciado = new TextBox();
             txtResposta = new TextBox();
-            txtMaterias = new ComboBox();
+            cmbBoxMateria = new ComboBox();
             btnGravar = new Button();
             btnCancelar = new Button();
             groupBox1 = new GroupBox();
-            listaRespostas = new CheckedListBox();
             btnRemover = new Button();
+            listaRespostas = new CheckedListBox();
             btnAdicionar = new Button();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -89,26 +88,29 @@
             txtResposta.Size = new Size(196, 23);
             txtResposta.TabIndex = 3;
             // 
-            // txtMaterias
+            // cmbBoxMateria
             // 
-            txtMaterias.FormattingEnabled = true;
-            txtMaterias.Location = new Point(109, 68);
-            txtMaterias.Name = "txtMaterias";
-            txtMaterias.Size = new Size(121, 23);
-            txtMaterias.TabIndex = 1;
+            cmbBoxMateria.FormattingEnabled = true;
+            cmbBoxMateria.Location = new Point(109, 68);
+            cmbBoxMateria.Name = "cmbBoxMateria";
+            cmbBoxMateria.Size = new Size(121, 23);
+            cmbBoxMateria.TabIndex = 1;
             // 
             // btnGravar
             // 
-            btnGravar.Location = new Point(207, 487);
+            btnGravar.DialogResult = DialogResult.OK;
+            btnGravar.Location = new Point(224, 507);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(100, 50);
             btnGravar.TabIndex = 8;
             btnGravar.Text = "Gravar";
             btnGravar.UseVisualStyleBackColor = true;
+            btnGravar.Click += btnGravar_Click;
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(323, 487);
+            btnCancelar.DialogResult = DialogResult.Cancel;
+            btnCancelar.Location = new Point(340, 507);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(100, 50);
             btnCancelar.TabIndex = 7;
@@ -127,14 +129,6 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Alternativas:";
             // 
-            // listaRespostas
-            // 
-            listaRespostas.FormattingEnabled = true;
-            listaRespostas.Location = new Point(6, 58);
-            listaRespostas.Name = "listaRespostas";
-            listaRespostas.Size = new Size(144, 114);
-            listaRespostas.TabIndex = 6;
-            // 
             // btnRemover
             // 
             btnRemover.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -144,6 +138,15 @@
             btnRemover.TabIndex = 5;
             btnRemover.Text = "Remover";
             btnRemover.UseVisualStyleBackColor = true;
+            btnRemover.Click += btnRemover_Click;
+            // 
+            // listaRespostas
+            // 
+            listaRespostas.FormattingEnabled = true;
+            listaRespostas.Location = new Point(6, 58);
+            listaRespostas.Name = "listaRespostas";
+            listaRespostas.Size = new Size(144, 114);
+            listaRespostas.TabIndex = 6;
             // 
             // btnAdicionar
             // 
@@ -154,18 +157,18 @@
             btnAdicionar.TabIndex = 4;
             btnAdicionar.Text = "Adicionar";
             btnAdicionar.UseVisualStyleBackColor = true;
+            btnAdicionar.Click += btnAdicionar_Click;
             // 
             // TelaQuestoesForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-
             ClientSize = new Size(452, 569);
             Controls.Add(btnAdicionar);
             Controls.Add(groupBox1);
             Controls.Add(btnCancelar);
             Controls.Add(btnGravar);
-            Controls.Add(txtMaterias);
+            Controls.Add(cmbBoxMateria);
             Controls.Add(txtResposta);
             Controls.Add(txtEnunciado);
             Controls.Add(label3);
@@ -190,12 +193,12 @@
         private Label label3;
         private TextBox txtEnunciado;
         private TextBox txtResposta;
-        private ComboBox txtMaterias;
         private Button btnGravar;
         private Button btnCancelar;
         private GroupBox groupBox1;
         private Button btnRemover;
         private CheckedListBox listaRespostas;
         private Button btnAdicionar;
+        public ComboBox cmbBoxMateria;
     }
 }

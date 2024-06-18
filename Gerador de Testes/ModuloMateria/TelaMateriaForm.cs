@@ -33,7 +33,6 @@ namespace Gerador_de_Testes.ModuloMateria
         public TelaMateriaForm()
         {
             InitializeComponent();
-
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
@@ -60,13 +59,6 @@ namespace Gerador_de_Testes.ModuloMateria
             }
             else
                 DialogResult = DialogResult.OK;
-        }
-        public void PreencherComboBox(List<Disciplina> disciplinas)
-        {
-            foreach (Disciplina disciplina in disciplinas)
-            {
-                cmbBoxDisciplina.Items.Add(disciplina.Nome);
-            }
         }
     }
 }

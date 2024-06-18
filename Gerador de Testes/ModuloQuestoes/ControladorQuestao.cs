@@ -1,10 +1,12 @@
 ﻿using Gerador_de_Testes.Compartilhado;
 using Gerador_de_Testes.ModuloTestes;
+using Gerador_de_Testes.ModuloMateria;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Gerador_de_Testes.ModuloDisciplina;
 
 namespace Gerador_de_Testes.ModulosQuestoes
 {
@@ -13,11 +15,13 @@ namespace Gerador_de_Testes.ModulosQuestoes
         private TabelaQuestaoControl tabelaQuestao;
         private IRepositorioQuestao repositorioQuestao;
         private IRepositorioTeste repositorioTeste;
+        private IRepositorioMateria repositorioMateria;
 
-        public ControladorQuestao(IRepositorioQuestao repositorioQuestao, IRepositorioTeste repositorioTeste)
+        public ControladorQuestao(IRepositorioQuestao repositorioQuestao, IRepositorioTeste repositorioTeste, IRepositorioMateria repositorioMateria)
         {
             this.repositorioQuestao = repositorioQuestao;
             this.repositorioTeste = repositorioTeste;
+            this.repositorioMateria = repositorioMateria;
         }
 
         public override string TipoCadastro { get { return "Questões"; } }
@@ -31,6 +35,8 @@ namespace Gerador_de_Testes.ModulosQuestoes
         public override void Adicionar()
         {
             TelaQuestoesForm telaQuestoes = new TelaQuestoesForm();
+
+            PreencherComboBox(telaQuestoes);
 
             DialogResult resultado = telaQuestoes.ShowDialog();
 
@@ -59,6 +65,9 @@ namespace Gerador_de_Testes.ModulosQuestoes
             }
 
             TelaQuestoesForm telaQuestoes = new TelaQuestoesForm();
+
+            PreencherComboBox(telaQuestoes);
+
             telaQuestoes.Questao = questaoSelecionada;
 
             DialogResult resultado = telaQuestoes.ShowDialog();
@@ -119,6 +128,21 @@ namespace Gerador_de_Testes.ModulosQuestoes
         {
             List<Questao> questoes = repositorioQuestao.SelecionarTodos();
             tabelaQuestao.AtualizarRegistros(questoes);
+        }
+        public List<Materia> SelecionarMateria()
+        {
+            List<Materia> materias = repositorioMateria.SelecionarTodos();
+
+            return materias;
+        }
+        private void PreencherComboBox(TelaQuestoesForm telaQuestoes)
+        {
+            List<Materia> materias = SelecionarMateria();
+
+            foreach (Materia materia in materias)
+            {
+                telaQuestoes.cmbBoxMateria.Items.Add(materia.Nome);
+            }
         }
     }
 }

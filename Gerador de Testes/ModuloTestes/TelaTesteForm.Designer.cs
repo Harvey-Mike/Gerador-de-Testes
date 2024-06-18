@@ -159,6 +159,7 @@
             // 
             // btnGravar
             // 
+            btnGravar.DialogResult = DialogResult.OK;
             btnGravar.Location = new Point(307, 528);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(96, 46);
@@ -169,6 +170,7 @@
             // 
             // btnCancelar
             // 
+            btnCancelar.DialogResult = DialogResult.Cancel;
             btnCancelar.Location = new Point(409, 528);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(96, 46);

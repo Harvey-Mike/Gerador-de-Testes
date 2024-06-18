@@ -12,14 +12,12 @@ namespace Gerador_de_Testes.ModulosQuestoes
     {
         public Materia Materia { get; set; }
         public string Enunciado { get; set; }
-        public List<Alternativa> Alternativas { get; set; }
-        public Alternativa RespostaCorreta { get; set; }
-
+        public string[] Alternativas { get; set; }
+        
         public Questao(Materia materia, string enunciado)
         {
             Materia = materia;
             Enunciado = enunciado;
-            Alternativas = new List<Alternativa>();
         }
 
         public override List<string> Validar()
@@ -32,12 +30,6 @@ namespace Gerador_de_Testes.ModulosQuestoes
             if (string.IsNullOrEmpty(Enunciado.Trim()))
                 erros.Add("O campo \"enunciado\" é obrigatório");
 
-            if (Alternativas.Count < 2)
-                erros.Add("A questão deve ter pelo menos duas alternativas");
-
-            if (RespostaCorreta == null)
-                erros.Add("A questão deve ter uma alternativa correta");
-
             return erros;
         }
 
@@ -47,29 +39,11 @@ namespace Gerador_de_Testes.ModulosQuestoes
             Materia = questao.Materia;
             Enunciado = questao.Enunciado;
             Alternativas = questao.Alternativas;
-            RespostaCorreta = questao.RespostaCorreta;
         }
 
         public override string ToString()
         {
             return $"{Enunciado} - {Materia?.Nome}";
-        }
-    }
-
-    public class Alternativa
-    {
-        public string Texto { get; set; }
-        public bool Correta { get; set; }
-
-        public Alternativa(string texto, bool correta)
-        {
-            Texto = texto;
-            Correta = correta;
-        }
-
-        public override string ToString()
-        {
-            return Texto;
         }
     }
 }

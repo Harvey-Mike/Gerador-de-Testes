@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Gerador_de_Testes.Compartilhado;
 
 namespace Gerador_de_Testes.ModuloMateria
 {
@@ -16,6 +17,8 @@ namespace Gerador_de_Testes.ModuloMateria
         {
             InitializeComponent();
             dataGridMateria.Columns.AddRange(CriarColunas());
+            dataGridMateria.ConfigurarGridSomenteLeitura();
+            dataGridMateria.ConfigurarGridZebrado();
         }
 
         public void AtualizarRegistros(List<Materia> materias)
