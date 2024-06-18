@@ -132,6 +132,7 @@
             // 
             // btnGravar
             // 
+            btnGravar.DialogResult = DialogResult.OK;
             btnGravar.Location = new Point(364, 257);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(98, 42);
@@ -142,6 +143,7 @@
             // 
             // btnCancelar
             // 
+            btnCancelar.DialogResult = DialogResult.Cancel;
             btnCancelar.Location = new Point(468, 257);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(98, 42);
@@ -184,7 +186,7 @@
         private Label label4;
         private TextBox txtId;
         private TextBox txtNomeMateria;
-        private ComboBox cmbBoxDisciplina;
+        public ComboBox cmbBoxDisciplina;
         private RadioButton rdbPrimeiraSerie;
         private RadioButton rdbSegundaSerie;
         private Button btnGravar;

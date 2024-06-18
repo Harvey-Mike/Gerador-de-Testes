@@ -127,7 +127,10 @@ namespace Gerador_de_Testes.ModuloMateria
         {
             List<Disciplina> disciplinas = SelecionarDisciplinas();
 
-            telaMateria.PreencherComboBox(disciplinas);
+            foreach (Disciplina disciplina in disciplinas)
+            {
+                telaMateria.cmbBoxDisciplina.Items.Add(disciplina.Nome);
+            }
         }
     }
 }

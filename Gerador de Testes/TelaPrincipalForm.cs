@@ -3,6 +3,7 @@ using Gerador_de_Testes.Compartilhado.GeradorDeTestes.WinApp.Compartilhado;
 using Gerador_de_Testes.ModuloDisciplina;
 using Gerador_de_Testes.ModuloMateria;
 using Gerador_de_Testes.ModuloTestes;
+using Gerador_de_Testes.ModulosQuestoes;
 
 
 namespace Gerador_de_Testes
@@ -15,7 +16,7 @@ namespace Gerador_de_Testes
 
         IRepositorioDisciplina repositorioDisciplina;
         IRepositorioMateria repositorioMateria;
-        //IRepositorioQuestoes repositorioQuestoes;
+        IRepositorioQuestao repositorioQuestoes;
         IRepositorioTeste repositorioTeste;
 
         public static TelaPrincipalForm Instancia { get; private set; }
@@ -30,7 +31,7 @@ namespace Gerador_de_Testes
             contexto = new ContextoDados(true);
             repositorioDisciplina = new RepositorioDisciplinaEmArquivo(contexto);
             repositorioMateria = new RepositorioMateriaEmArquivo(contexto);
-            //repositorioQuestoes = new RepositorioQuestoesEmArquivo(contexto);
+            repositorioQuestoes = new RepositorioQuestaoEmArquivo(contexto);
             repositorioTeste = new RepositorioTesteEmArquivo(contexto);
         }
 
@@ -55,12 +56,13 @@ namespace Gerador_de_Testes
 
         private void questoesMenuItem_Click(object sender, EventArgs e)
         {
+            controlador = new ControladorQuestao(repositorioQuestoes, repositorioTeste, repositorioMateria);
 
+            ConfigurarTelaPrincipal(controlador);
         }
 
         private void testesMenuItem_Click(object sender, EventArgs e)
         {
-            repositorioTeste = new RepositorioTesteEmArquivo(contexto);  
             controlador = new ControladorTeste(repositorioTeste, repositorioDisciplina, repositorioMateria);
 
             ConfigurarTelaPrincipal(controlador);

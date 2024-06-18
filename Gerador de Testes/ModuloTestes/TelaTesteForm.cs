@@ -66,7 +66,7 @@ namespace Gerador_de_Testes.ModuloTestes
             {
                 Disciplina = disciplina,
                 Materia = materia,
-                Questoes = new List<Questao>() 
+                Questoes = new List<Questao>()
             };
 
             List<string> erros = teste.Validar();
@@ -76,10 +76,7 @@ namespace Gerador_de_Testes.ModuloTestes
                 TelaPrincipalForm.Instancia.AtualizarRodape(erros[0]);
                 DialogResult = DialogResult.None;
             }
-            else
-            {
-                DialogResult = DialogResult.OK;
-            }
+
         }
     }
 }
