@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Gerador_de_Testes.Compartilhado;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,8 @@ namespace Gerador_de_Testes.ModuloDisciplina
         {
             InitializeComponent();
             dataGridDisciplina.Columns.AddRange(CriarColunas());
+            dataGridDisciplina.ConfigurarGridSomenteLeitura();
+            dataGridDisciplina.ConfigurarGridZebrado();
         }
 
         public void AtualizarRegistros(List<Disciplina> disciplinas)

@@ -1,6 +1,6 @@
 ﻿namespace Gerador_de_Testes.ModuloTestes
 {
-    partial class TelaTestesForm
+    partial class TelaTesteForm
     {
         /// <summary>
         /// Required designer variable.
@@ -34,12 +34,12 @@
             label4 = new Label();
             checkBoxRecuperacao = new CheckBox();
             groupBox1 = new GroupBox();
+            listBoxQuestoes = new ListBox();
+            btnSortear = new Button();
             cmbBoxMateria = new ComboBox();
             cmbBoxDisciplina = new ComboBox();
             txtTitulo = new TextBox();
             numericUpDown1 = new NumericUpDown();
-            btnSortear = new Button();
-            listBoxQuestoes = new ListBox();
             btnGravar = new Button();
             btnCancelar = new Button();
             groupBox1.SuspendLayout();
@@ -109,6 +109,24 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Questões Selecionadas";
             // 
+            // listBoxQuestoes
+            // 
+            listBoxQuestoes.FormattingEnabled = true;
+            listBoxQuestoes.ItemHeight = 20;
+            listBoxQuestoes.Location = new Point(6, 83);
+            listBoxQuestoes.Name = "listBoxQuestoes";
+            listBoxQuestoes.Size = new Size(458, 244);
+            listBoxQuestoes.TabIndex = 1;
+            // 
+            // btnSortear
+            // 
+            btnSortear.Location = new Point(27, 41);
+            btnSortear.Name = "btnSortear";
+            btnSortear.Size = new Size(170, 36);
+            btnSortear.TabIndex = 6;
+            btnSortear.Text = "Sortear Questões ";
+            btnSortear.UseVisualStyleBackColor = true;
+            // 
             // cmbBoxMateria
             // 
             cmbBoxMateria.FormattingEnabled = true;
@@ -139,24 +157,6 @@
             numericUpDown1.Size = new Size(49, 23);
             numericUpDown1.TabIndex = 4;
             // 
-            // btnSortear
-            // 
-            btnSortear.Location = new Point(27, 41);
-            btnSortear.Name = "btnSortear";
-            btnSortear.Size = new Size(170, 36);
-            btnSortear.TabIndex = 6;
-            btnSortear.Text = "Sortear Questões ";
-            btnSortear.UseVisualStyleBackColor = true;
-            // 
-            // listBoxQuestoes
-            // 
-            listBoxQuestoes.FormattingEnabled = true;
-            listBoxQuestoes.ItemHeight = 20;
-            listBoxQuestoes.Location = new Point(6, 83);
-            listBoxQuestoes.Name = "listBoxQuestoes";
-            listBoxQuestoes.Size = new Size(458, 244);
-            listBoxQuestoes.TabIndex = 1;
-            // 
             // btnGravar
             // 
             btnGravar.Location = new Point(307, 528);
@@ -165,6 +165,7 @@
             btnGravar.TabIndex = 8;
             btnGravar.Text = "Gravar";
             btnGravar.UseVisualStyleBackColor = true;
+            btnGravar.Click += btnGravar_Click_1;
             // 
             // btnCancelar
             // 
@@ -175,7 +176,7 @@
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             // 
-            // TelaTestesForm
+            // TelaTesteForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -195,7 +196,7 @@
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "TelaTestesForm";
+            Name = "TelaTesteForm";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastro de Testes";
