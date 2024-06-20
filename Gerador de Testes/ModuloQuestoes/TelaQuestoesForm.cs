@@ -66,6 +66,7 @@ namespace Gerador_de_Testes.ModulosQuestoes
             if (materia == null)
             {
                 MessageBox.Show("Selecione uma matéria.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DialogResult = DialogResult.None;
                 return;
             }
 
