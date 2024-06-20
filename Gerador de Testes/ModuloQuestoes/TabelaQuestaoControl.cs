@@ -16,18 +16,31 @@ namespace Gerador_de_Testes.ModulosQuestoes
         public TabelaQuestaoControl()
         {
             InitializeComponent();
-            dataGridQuestoes.Columns.AddRange(CriarColunas());
+            ConfigurarColunas();
             dataGridQuestoes.ConfigurarGridSomenteLeitura();
             dataGridQuestoes.ConfigurarGridZebrado();
+        }
+
+        private void ConfigurarColunas()
+        {
+            DataGridViewColumn[] colunas = new DataGridViewColumn[]
+            {
+                new DataGridViewTextBoxColumn { Name = "id", HeaderText = "Id" },
+                new DataGridViewTextBoxColumn { Name = "enunciado", HeaderText = "Enunciado" },
+                new DataGridViewTextBoxColumn { Name = "materia", HeaderText = "Matéria" },
+                new DataGridViewTextBoxColumn { Name = "respostaCorreta", HeaderText = "Resposta Correta" }
+            };
+
+            dataGridQuestoes.Columns.AddRange(colunas);
         }
 
         public void AtualizarRegistros(List<Questao> questoes)
         {
             dataGridQuestoes.Rows.Clear();
 
-            foreach (Questao q in questoes)
+            foreach (Questao questao in questoes)
             {
-                dataGridQuestoes.Rows.Add(q.Id, q.Enunciado, q.Materia?.Nome);
+                dataGridQuestoes.Rows.Add(questao.Id, questao.Enunciado, questao.Materia.Nome, questao.RespostaCorreta);
             }
         }
 
@@ -36,18 +49,9 @@ namespace Gerador_de_Testes.ModulosQuestoes
             if (dataGridQuestoes.SelectedRows.Count == 0)
                 return -1;
 
-            return Convert.ToInt32(dataGridQuestoes.SelectedRows[0].Cells[0].Value);
-        }
+            int id = Convert.ToInt32(dataGridQuestoes.SelectedRows[0].Cells["id"].Value);
 
-        private DataGridViewColumn[] CriarColunas()
-        {
-            return new DataGridViewColumn[]
-       {
-            new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id" },
-            new DataGridViewTextBoxColumn { DataPropertyName = "Enunciado", HeaderText = "Enunciado" },
-            new DataGridViewTextBoxColumn { DataPropertyName = "Materia", HeaderText = "Matéria" }
-            //new DataGridViewTextBoxColumn { DataPropertyName = "RespostaCorreta", HeaderText = "Resposta Correta" }
-       };
+            return id;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Gerador_de_Testes.Compartilhado.GeradorDeTestes.WinApp.Compartilhado;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,61 +7,71 @@ using System.Threading.Tasks;
 
 namespace Gerador_de_Testes.Compartilhado
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
-    namespace GeradorDeTestes.WinApp.Compartilhado
+    public abstract class RepositorioBaseEmArquivo<T> where T : EntidadeBase
     {
-        public abstract class RepositorioBaseEmMemoria<T> where T : EntidadeBase
+        protected ContextoDados contexto;
+
+        protected abstract List<T> ObterRegistros();
+
+        protected int contadorId = 1;
+
+        public RepositorioBaseEmArquivo(ContextoDados contexto)
         {
-            protected List<T> registros = new List<T>();
-            protected int contadorId = 1;
+            this.contexto = contexto;
 
-            public void Cadastrar(T novoRegistro)
-            {
-                novoRegistro.Id = contadorId++;
-                registros.Add(novoRegistro);
-            }
+            if (ObterRegistros().Count > 0)
+                contadorId = ObterRegistros().Max(e => e.Id) + 1;
+        }
 
-            public bool Editar(int id, T novaEntidade)
-            {
-                T registro = SelecionarPorId(id);
+        public void Cadastrar(T novoRegistro)
+        {
+            if (novoRegistro == null)
+                throw new ArgumentNullException(nameof(novoRegistro), "O novo registro não pode ser nulo.");
 
-                if (registro == null)
-                    return false;
+            novoRegistro.Id = contadorId++;
+            ObterRegistros().Add(novoRegistro);
+            contexto.Gravar();
+        }
 
-                registro.AtualizarRegistro(novaEntidade);
-                return true;
-            }
+        public bool Editar(int id, T novaEntidade)
+        {
+            T registro = SelecionarPorId(id);
 
-            public bool Excluir(int id)
-            {
-                return registros.Remove(SelecionarPorId(id));
-            }
+            if (registro == null)
+                return false;
 
-            public List<T> SelecionarTodos()
-            {
-                return registros;
-            }
+            registro.AtualizarRegistro(novaEntidade);
 
-            public T SelecionarPorId(int id)
-            {
-                return registros.Find(x => x.Id == id);
-            }
+            contexto.Gravar();
 
-            public bool Existe(int id)
-            {
-                return registros.Any(x => x.Id == id);
-            }
+            return true;
+        }
 
-            public void CadastrarVarios(List<T> registrosAdicionados)
-            {
-                foreach (T registro in registrosAdicionados)
-                {
-                    registro.Id = contadorId++;
-                    registros.Add(registro);
-                }
-            }
+        public virtual bool Excluir(int id)
+        {
+            bool conseguiuExcluir = ObterRegistros().Remove(SelecionarPorId(id));
+
+            if (!conseguiuExcluir)
+                return false;
+
+            contexto.Gravar();
+
+            return true;
+        }
+
+        public List<T> SelecionarTodos()
+        {
+            return ObterRegistros();
+        }
+
+        public T SelecionarPorId(int id)
+        {
+            return ObterRegistros().Find(x => x.Id == id);
+        }
+
+        public bool Existe(int id)
+        {
+            return ObterRegistros().Any(x => x.Id == id);
         }
     }
 
