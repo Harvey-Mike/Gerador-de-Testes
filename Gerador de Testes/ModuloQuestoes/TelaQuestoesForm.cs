@@ -66,18 +66,21 @@ namespace Gerador_de_Testes.ModulosQuestoes
             if (materia == null)
             {
                 MessageBox.Show("Selecione uma matéria.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DialogResult = DialogResult.None;
                 return;
             }
 
             if (alternativas.Count < 2)
             {
                 MessageBox.Show("Devem ser fornecidas pelo menos duas alternativas.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DialogResult = DialogResult.None;
                 return;
             }
 
             if (string.IsNullOrEmpty(respostaCorreta))
             {
                 MessageBox.Show("Selecione a resposta correta.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DialogResult = DialogResult.None;
                 return;
             }
 
@@ -86,6 +89,7 @@ namespace Gerador_de_Testes.ModulosQuestoes
             if (questao == null)
             {
                 MessageBox.Show("Erro ao criar a questão.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DialogResult = DialogResult.None;
                 return;
             }
 
