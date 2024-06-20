@@ -50,7 +50,7 @@ namespace Gerador_de_Testes.Compartilhado
                 JsonSerializerOptions options = new JsonSerializerOptions()
                 {
                     WriteIndented = true,
-                    ReferenceHandler = ReferenceHandler.Preserve
+                   // ReferenceHandler = ReferenceHandler.Preserve
                 };
 
                 byte[] registrosEmBytes = JsonSerializer.SerializeToUtf8Bytes(this, options);

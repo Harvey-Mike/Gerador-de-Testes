@@ -35,9 +35,7 @@ namespace Gerador_de_Testes.ModulosQuestoes
         public override void Adicionar()
         {
             TelaQuestoesForm telaQuestoes = new TelaQuestoesForm();
-
             PreencherComboBox(telaQuestoes);
-
             DialogResult resultado = telaQuestoes.ShowDialog();
 
             if (resultado != DialogResult.OK)
@@ -45,19 +43,21 @@ namespace Gerador_de_Testes.ModulosQuestoes
 
             Questao novaQuestao = telaQuestoes.Questao;
 
+            if (novaQuestao == null)
+            {
+                MessageBox.Show("Erro ao obter a nova questão.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             repositorioQuestao.Cadastrar(novaQuestao);
-
             CarregarQuestoes();
-
             TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{novaQuestao.Enunciado}\" foi criado com sucesso!");
         }
 
         public override void Editar()
         {
             int idSelecionado = tabelaQuestao.ObterRegistroSelecionado();
-
             Questao questaoSelecionada = repositorioQuestao.SelecionarPorId(idSelecionado);
-
             if (questaoSelecionada == null)
             {
                 MessageBox.Show("Não é possível realizar esta ação sem selecionar algo", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -65,31 +65,22 @@ namespace Gerador_de_Testes.ModulosQuestoes
             }
 
             TelaQuestoesForm telaQuestoes = new TelaQuestoesForm();
-
             PreencherComboBox(telaQuestoes);
-
             telaQuestoes.Questao = questaoSelecionada;
-
             DialogResult resultado = telaQuestoes.ShowDialog();
-
             if (resultado != DialogResult.OK)
                 return;
 
             Questao questaoEditada = telaQuestoes.Questao;
-
             repositorioQuestao.Editar(idSelecionado, questaoEditada);
-
             CarregarQuestoes();
-
             TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{questaoEditada.Enunciado}\" foi editado com sucesso!");
         }
 
         public override void Excluir()
         {
             int idSelecionado = tabelaQuestao.ObterRegistroSelecionado();
-
             Questao questaoSelecionada = repositorioQuestao.SelecionarPorId(idSelecionado);
-
             if (questaoSelecionada == null)
             {
                 MessageBox.Show("Não é possível realizar esta ação sem um registro selecionado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -104,14 +95,11 @@ namespace Gerador_de_Testes.ModulosQuestoes
             }
 
             DialogResult resposta = MessageBox.Show($"Você deseja realmente excluir o registro \"{questaoSelecionada.Enunciado}\"?", "Confirmar Exclusão", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
             if (resposta != DialogResult.Yes)
                 return;
 
             repositorioQuestao.Excluir(questaoSelecionada.Id);
-
             CarregarQuestoes();
-
             TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{questaoSelecionada.Enunciado}\" foi excluído com sucesso!");
         }
 
@@ -139,9 +127,14 @@ namespace Gerador_de_Testes.ModulosQuestoes
         {
             List<Materia> materias = SelecionarMateria();
 
+            telaQuestoes.cmbBoxMateria.DisplayMember = "Nome"; 
+            telaQuestoes.cmbBoxMateria.ValueMember = "Id"; 
+
+            telaQuestoes.cmbBoxMateria.Items.Clear(); 
+
             foreach (Materia materia in materias)
             {
-                telaQuestoes.cmbBoxMateria.Items.Add(materia.Nome);
+                telaQuestoes.cmbBoxMateria.Items.Add(materia);
             }
         }
     }
