@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Gerador_de_Testes.Compartilhado
+namespace Gerador_de_Testes.Compartilhado.Extensoes
 {
     public static class DataGridViewExtensions
     {

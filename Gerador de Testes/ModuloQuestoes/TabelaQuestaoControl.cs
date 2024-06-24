@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Gerador_de_Testes.Compartilhado;
+using Gerador_de_Testes.Compartilhado.Extensoes;
 
 namespace Gerador_de_Testes.ModulosQuestoes
 {
