@@ -1,4 +1,4 @@
-﻿using Gerador_de_Testes.Compartilhado;
+﻿using Gerador_de_Testes.Compartilhado.Extensoes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
